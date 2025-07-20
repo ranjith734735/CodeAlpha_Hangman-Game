@@ -1,0 +1,47 @@
+import random
+
+def chatbot():
+    print("==== Simple Rule-Based Chatbot ====")
+    print("Commands you can use: hello, hi, hey, how are you, what's up, bye, quit, exit")
+    print("Type 'bye', 'quit', or 'exit' to end the chat.\n")
+
+    greetings = ["hello", "hi", "hey"]
+    farewells = ["bye", "quit", "exit"]
+    feeling_inquiries = ["how are you", "what's up", "how do you feel"]
+
+    greeting_responses = ["Hi there!", "Hello! :)", "Hey! How can I help you?"]
+    farewell_responses = ["Goodbye! Have a nice day!", "Bye! Feel free to chat again.", "Farewell!"]
+    feeling_responses = [
+        "I'm just a chatbot, but I'm doing great!",
+        "I don't have feelings, but thanks for asking!", 
+        "All systems operational! How about you?"
+    ]
+    unknown_responses = [
+        "Sorry, I didn't understand that. Can you rephrase?",
+        "I'm not sure how to respond to that. Try asking something else.",
+        "Hmm, I'm not trained for that yet!"
+    ]
+
+    while True:
+        user_input = input("You: ").strip().lower()
+
+        if not user_input:
+            print("Chatbot: Please type something...")
+            continue
+
+        if any(greeting in user_input for greeting in greetings):
+            print(f"Chatbot: {random.choice(greeting_responses)}")
+
+        elif any(farewell in user_input for farewell in farewells):
+            print(f"Chatbot: {random.choice(farewell_responses)}")
+            break
+
+        elif any(feeling in user_input for feeling in feeling_inquiries):
+            print(f"Chatbot: {random.choice(feeling_responses)}")
+
+        else:
+            print(f"Chatbot: {random.choice(unknown_responses)}")
+
+
+if __name__ == "__main__":
+    chatbot()
